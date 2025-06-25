@@ -14,7 +14,7 @@ def load_model():
 
 model = load_model()
 
-# === Feature extraction (fixed: only MFCC) ===
+# === Feature extraction 
 def extract_features(audio_file, max_pad_len=174):
     try:
         audio, sr = librosa.load(audio_file, duration=4, offset=0.5)
@@ -24,8 +24,8 @@ def extract_features(audio_file, max_pad_len=174):
         pad_width = max(0, max_pad_len - mfcc.shape[1])
         mfcc = np.pad(mfcc, pad_width=((0, 0), (0, pad_width)), mode='constant')
 
-        combined = mfcc.T  # (174, 40)
-        combined = combined[np.newaxis, ...]  # (1, 174, 40)
+        combined = mfcc.T  
+        combined = combined[np.newaxis, ...]  
 
         return combined
 
